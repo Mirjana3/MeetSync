@@ -1,4 +1,3 @@
-/* Reset & base */
 body,
 html {
     margin: 0;
@@ -8,19 +7,17 @@ html {
     overflow: hidden;
 }
 
-/* Container flex column: topbar + main */
 .container {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-/* Topbar with menu and logout aligned left/right */
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2c3e50;
+    background-color: #e3d5e3;
     color: white;
     padding: 0 20px;
     height: 50px;
@@ -82,20 +79,15 @@ html {
 #sidebar a {
     display: block;
     padding: 10px 0;
-    /* Optional: adds vertical spacing */
     color: #333;
-    /* Optional: adjust link color */
     text-decoration: none;
-    /* Optional: remove underline */
 }
 
 #sidebar a:hover {
-    background-color: #dbeafe;
-    /* Optional: highlight on hover */
-    color: #2563eb;
+    background-color: #efddfb;
+    color: #e2b6f4;
 }
 
-/* Inline minimal styles for username area */
 #username-container {
     padding: 15px;
     font-weight: bold;
@@ -113,14 +105,12 @@ html {
     box-sizing: border-box;
 }
 
-/* Main content: flex row with left and right parts */
 .main-content {
     display: flex;
     flex: 1;
     height: calc(100% - 50px);
 }
 
-/* Weekly calendar: 2/3 width */
 .calendar-weekly {
     flex: 2;
     padding: 20px;
@@ -128,7 +118,6 @@ html {
     background-color: #fff;
 }
 
-/* Right side panel: 1/3 width, vertical split */
 .side-panel {
     flex: 1;
     display: flex;
@@ -154,8 +143,6 @@ html {
 }
 
 
-
-/* Monthly calendar top half */
 .calendar-monthly {
     flex: 1;
     margin-bottom: 20px;
@@ -165,8 +152,6 @@ html {
     box-sizing: border-box;
 }
 
-/* Monthly placeholder for demo */
-/* Monthly calendar grid */
 .monthly-placeholder {
     display: flex;
     flex-direction: column;
@@ -190,13 +175,13 @@ html {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #2563eb;
+    color: #ec83ef;
     transition: color 0.2s;
     padding: 4px 8px;
 }
 
 .monthly-controls button:hover {
-    color: #1d4ed8;
+    color: #e17beb;
 }
 
 .monthly-header {
@@ -215,14 +200,14 @@ html {
     font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
-    color: #3b82f6;
+    color: #c386e0;
     transition: color 0.3s ease;
     padding: 0 8px;
     user-select: none;
 }
 
 .monthly-header button:hover {
-    color: #2563eb;
+    color: #c178e2;
 }
 
 
@@ -260,14 +245,13 @@ html {
 }
 
 .monthly-grid .day-cell.today {
-    background-color: #3b82f6;
+    background-color: #c87df4;
     color: white;
     font-weight: 700;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 
-/* Chat box bottom half */
 .chat-box {
     flex: 1;
     display: flex;
@@ -282,14 +266,13 @@ html {
     margin: 0 0 10px 0;
 }
 
-/* Messages area */
 .messages {
     flex: 1;
     border: 1px solid #ccc;
     margin-bottom: 10px;
     padding: 10px;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: white;
     font-size: 0.9rem;
 }
 
@@ -301,7 +284,6 @@ html {
 }
 
 
-/* Input and send button container */
 .chat-input-container {
     display: flex;
     gap: 10px;
@@ -316,7 +298,7 @@ html {
 
 #sendBtn {
     padding: 8px 15px;
-    background-color: #3498db;
+    background-color: #de61eb;
     color: white;
     border: none;
     cursor: pointer;
@@ -324,14 +306,10 @@ html {
     border-radius: 3px;
     transition: background-color 0.3s ease;
 }
-
+    
 #sendBtn:hover {
-    background-color: #2980b9;
+    background-color: #bf61eb;
 }
-
-/* Removed old table styles for weekly calendar */
-
-/* --- NEW WEEKLY CALENDAR GRID STYLE --- */
 
 .weekly-placeholder {
     max-width: 100%;
@@ -341,7 +319,6 @@ html {
     gap: 12px;
 }
 
-/* Controls container */
 .week-controls {
     display: flex;
     justify-content: center;
@@ -352,9 +329,9 @@ html {
 .week-controls button {
     padding: 8px 16px;
     font-size: 16px;
-    border: 1.5px solid #3b82f6;
+    border: 1.5px solid #dc89eb;
     background: white;
-    color: #3b82f6;
+    color: #dc89eb;
     font-weight: 600;
     border-radius: 6px;
     cursor: pointer;
@@ -362,12 +339,11 @@ html {
 }
 
 .week-controls button:hover {
-    background-color: #3b82f6;
+    background-color: #d481e3;
     color: white;
-    border-color: #2563eb;
+    border-color: #dc89eb;
 }
 
-/* Weekly calendar grid container */
 .weekly-grid {
     display: grid;
     grid-template-columns: 60px repeat(7, 1fr);
@@ -379,7 +355,6 @@ html {
     user-select: none;
 }
 
-/* Day headers container */
 .weekly-grid .day-header {
     display: flex;
     flex-direction: column;
@@ -395,7 +370,6 @@ html {
     user-select: none;
 }
 
-/* Day name (upper part) */
 .weekly-grid .day-name {
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -404,14 +378,12 @@ html {
     color: #4b5563;
 }
 
-/* Date below day name */
 .weekly-grid .day-date {
     font-size: 16px;
     font-weight: 600;
     color: #111827;
 }
 
-/* Hour labels */
 .weekly-grid .hour-label {
     background-color: #fafafa;
     color: #4b5563;
@@ -424,7 +396,6 @@ html {
     font-size: 13px;
 }
 
-/* Time slots */
 .weekly-grid .time-slot {
     border-right: 1px solid #e5e7eb;
     border-bottom: 1px solid #e5e7eb;
@@ -433,15 +404,13 @@ html {
 }
 
 .weekly-grid .time-slot:hover {
-    background-color: #dbeafe;
-    /* subtle blue highlight */
+    background-color: #eddbef;
 }
 
-/* Highlight today's day column header */
 .weekly-grid .day-header.today {
-    background-color: #3b82f6;
+    background-color: #e6d4f1;
     color: white;
-    box-shadow: inset 0 -3px 0 #2563eb;
+    box-shadow: inset 0 -3px 0 #a45dbf;
 }
 
 .weekly-grid .day-header.today .day-name,
@@ -449,7 +418,7 @@ html {
     color: white;
 }
 
-/* === Task Modal Styles === */
+
 .modal {
   display: none;
   position: fixed;
@@ -487,8 +456,8 @@ html {
 .modal-content input[type="date"],
 .modal-content input[type="time"],
 .modal-content textarea {
-  background-color: #f9fafb;
-  border: 1px solid #d1d5db;
+  background-color: #f8edf9;
+  border: 1px solid #ede0ee;
   padding: 0.6em;
   border-radius: 6px;
   font-size: 1em;
@@ -497,7 +466,7 @@ html {
 
 .modal-content input:focus,
 .modal-content textarea:focus {
-  border-color: #3b82f6;
+  border-color: #cc8eed;
   outline: none;
 }
 
@@ -510,7 +479,7 @@ html {
 }
 
 .btn-primary {
-  background-color: #007BFF;
+  background-color: #e4bef7;
   color: white;
   border: none;
   padding: 0.6em 1.2em;
@@ -519,7 +488,7 @@ html {
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #eb9bec;
 }
 
 .btn-secondary {
@@ -541,7 +510,7 @@ html {
 }
 
 .task {
-  background-color: #cce5ff;
+  background-color: #f5ccff;
   color: white;
   padding: 2px 4px;
   border-radius: 4px;
@@ -553,10 +522,9 @@ html {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid #e4bef7;
 }
 
 .task:hover {
-  background-color: #2563eb;
+  background-color: #ddb0f4;
 }
-
