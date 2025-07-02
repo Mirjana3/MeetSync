@@ -1,4 +1,3 @@
-// == Firebase setup ==
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
 import {
     getAuth, onAuthStateChanged, signOut
@@ -21,7 +20,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// == Globalne varijable ==
 let currentUser = null;
 let currentGroup = null;
 let tasks = [];
@@ -60,9 +58,9 @@ onAuthStateChanged(auth, async (user) => {
         window.location.href = '../login.html';
     } else {
         currentUser = user;
-        await ensureDefaultGroup();  // tvoja logika
-        await loadUserGroups();      // tvoja logika
-        await loadAndShowNickname(); // ovdje sigurno korisnik postoji
+        await ensureDefaultGroup(); 
+        await loadUserGroups();      
+        await loadAndShowNickname(); 
     }
 });
 
@@ -176,7 +174,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 timeSlot.dataset.day = dayIndex;
                 timeSlot.dataset.hour = hour;
 
-                // Save reference for use in modal
                 const slotDate = new Date(monday);
                 slotDate.setDate(monday.getDate() + dayIndex);
                 timeSlot.dataset.date = slotDate.toISOString().split('T')[0]; // YYYY-MM-DD
@@ -313,10 +310,9 @@ window.addEventListener('DOMContentLoaded', () => {
         if (newName.length > 0) {
             if (currentUser) {
                 const userRef = doc(db, "users", currentUser.uid);
-                // Use setDoc with merge to ensure nickname is always set, even if user doc doesn't exist yet
                 await setDoc(userRef, { nickname: newName }, { merge: true });
-                // Fetch again to ensure UI is up to date after save
                 const userSnap = await getDoc(userRef);
+
                 if (userSnap.exists()) {
                     const data = userSnap.data();
                     usernameDisplay.textContent = data.nickname || newName;
@@ -363,7 +359,6 @@ window.addEventListener('DOMContentLoaded', () => {
     sidebarClose.addEventListener('click', closeSidebar);
     sidebarOverlay.addEventListener('click', closeSidebar);
 
-    // Otvori modal na klik linka
     createGroupLink.addEventListener('click', (e) => {
         e.preventDefault();
         const newCode = generateGroupCode();
@@ -372,28 +367,24 @@ window.addEventListener('DOMContentLoaded', () => {
         createGroupModal.dataset.generatedCode = newCode;
     });
 
-    // === Event listeneri za CREATE GROUP ===
     cancelCreateGroupBtn.addEventListener('click', () => {
         createGroupModal.style.display = 'none';
     });
 
-    // Kreiraj grupu na klik Create
     confirmCreateGroupBtn.addEventListener('click', async () => {
         const groupName = groupNameInput.value.trim();
         if (!groupName) return;
 
         const groupCode = createGroupModal.dataset.generatedCode;
-        // Save group with the generated code and name
         await saveGroupToFirestore(groupCode, groupName);
         currentGroup = groupCode;
         await loadUserGroups();
 
-        generatedGroupCode.textContent = groupName; // Show group name, not code
+        generatedGroupCode.textContent = groupName; 
         createGroupModal.style.display = 'none';
         groupNameInput.value = '';
     });
 
-    // Event listener za pridruživanje grupi
     confirmJoinGroupBtn.addEventListener('click', async () => {
         const groupCode = joinGroupCodeInput.value.trim().toUpperCase();
         if (!groupCode) return;
@@ -426,7 +417,6 @@ window.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         if (!currentUser) return alert("Not authenticated.");
 
-        // Učitaj korisnikove grupe osim defaultne
         const userRef = doc(db, "users", currentUser.uid);
         const userSnap = await getDoc(userRef);
         if (!userSnap.exists()) return alert("User data not found.");
@@ -439,7 +429,6 @@ window.addEventListener('DOMContentLoaded', () => {
             return alert("No groups available for deletion.");
         }
 
-        // Isprazni prethodne opcije
         groupSelectToDelete.innerHTML = '';
 
         for (const groupCode of deletableGroups) {
@@ -458,26 +447,21 @@ window.addEventListener('DOMContentLoaded', () => {
         deleteGroupModal.style.display = 'block';
     });
 
-    // Klik na Cancel
     cancelDeleteGroupBtn.addEventListener('click', () => {
         deleteGroupModal.style.display = 'none';
     });
 
-
-
-    // Keyboard accessibility for closing the sidenav
     document.addEventListener('keydown', (event) => {
         if (event.key === "Escape") {
-            closeSidebar(); // was closeNav(); but I assume you meant closeSidebar()
+            closeSidebar(); 
         }
     });
 
-    // Klik na Delete
+
     confirmDeleteGroupBtn.addEventListener('click', async () => {
         const selectedGroup = groupSelectToDelete.value;
         if (!selectedGroup) return;
 
-        // Validacija u funkciji
         const success = await deleteGroup(selectedGroup);
         if (success) {
             deleteGroupModal.style.display = 'none';
@@ -507,7 +491,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (!title || !date || !time) return;
 
-        // Kreiraj anketu kao poruku u chat za glasanje
         await addDoc(collection(db, 'chats', currentGroup, 'messages'), {
             userId: currentUser.uid,
             poll: {
@@ -526,7 +509,6 @@ window.addEventListener('DOMContentLoaded', () => {
         eventTimeInput.value = '';
     });
 
-    // Startaj listener za chat poruke (real-time update)
     startChatListener();
 
 });
@@ -539,7 +521,6 @@ async function ensureDefaultGroup() {
     const groupSnap = await getDoc(groupRef);
 
     if (!groupSnap.exists()) {
-        // Create a private default group for this user
         await setDoc(groupRef, {
             name: "My Calendar",
             members: [currentUser.uid],
@@ -547,7 +528,6 @@ async function ensureDefaultGroup() {
             isDefault: true
         });
     } else {
-        // If group exists but user is not a member, add them
         const groupData = groupSnap.data();
         if (!groupData.members.includes(currentUser.uid)) {
             await updateDoc(groupRef, {
@@ -556,7 +536,6 @@ async function ensureDefaultGroup() {
         }
     }
 
-    // Add default group to user's joinedGroups if not already present
     const userRef = doc(db, "users", currentUser.uid);
     const userSnap = await getDoc(userRef);
 
@@ -568,17 +547,14 @@ async function ensureDefaultGroup() {
             });
         }
     } else {
-        // If user doc doesn't exist, create it with default group
         await setDoc(userRef, { joinedGroups: [defaultGroupCode] });
     }
 
-    // Set currentGroup to default if not set
     if (!currentGroup) {
         currentGroup = defaultGroupCode;
     }
 }
 
-// Funkcija za kreiranje eventa u bazi
 async function createEvent(event) {
     if (!currentUser || !currentGroup) return;
     await addDoc(collection(db, "events"), {
@@ -610,7 +586,6 @@ async function saveGroupToFirestore(groupCode, groupName) {
 
 function renderTasks() {
     const allSlots = document.querySelectorAll('.time-slot');
-    // Remove all existing tasks from slots
     allSlots.forEach(slot => {
         slot.querySelectorAll('.task').forEach(task => task.remove());
     });
@@ -639,7 +614,7 @@ function renderTasks() {
                 taskEl.style.top = `${topOffset}px`;
                 taskEl.style.left = '4px';
                 taskEl.style.right = '4px';
-                slot.style.position = 'relative'; // Ensure slot is positioned
+                slot.style.position = 'relative'; 
                 slot.appendChild(taskEl);
                 break;
             }
@@ -648,15 +623,13 @@ function renderTasks() {
 }
 
 
-let unsubscribeTasks = null; // globalna varijabla
+let unsubscribeTasks = null; 
 
 function listenToTasks() {
     if (!currentGroup) return;
 
-    // Remove previous listener if exists
     if (unsubscribeTasks) unsubscribeTasks();
 
-    // Query tasks for the current group
     const q = query(collection(db, "groups", currentGroup, "tasks"));
 
     unsubscribeTasks = onSnapshot(q, (snapshot) => {
@@ -680,13 +653,13 @@ function startChatListener() {
 
     onSnapshot(q, async (snapshot) => {
         chatContainer.innerHTML = '';
-        // Collect all userIds to fetch nicknames in batch
+
         const userIds = new Set();
         snapshot.forEach((docSnap) => {
             const message = docSnap.data();
             if (message.userId) userIds.add(message.userId);
         });
-        // Fetch all nicknames in parallel
+
         const userIdToNickname = {};
         await Promise.all(Array.from(userIds).map(async (uid) => {
             const userRef = doc(db, "users", uid);
@@ -729,7 +702,6 @@ function startChatListener() {
             chatContainer.appendChild(div);
         });
 
-        // Add event listeners for vote buttons
         chatContainer.querySelectorAll('.vote-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 const messageId = btn.getAttribute('data-id');
@@ -740,7 +712,6 @@ function startChatListener() {
     });
 }
 
-// Generiraj nasumični kod grupe (6 znakova)
 function generateGroupCode() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let code = "";
@@ -751,7 +722,6 @@ function generateGroupCode() {
 }
 
 
-// Kreiraj novu grupu
 async function createGroup(groupName) {
     if (!currentUser) return;
 
@@ -772,11 +742,9 @@ async function createGroup(groupName) {
     await loadUserGroups();
 }
 
-// Pridruži se postojećoj grupi
 async function joinGroup(groupCode) {
     if (!currentUser) return;
 
-    // Accept both lower/upper case codes
     const normalizedCode = groupCode.trim().toUpperCase();
     const groupRef = doc(db, "groups", normalizedCode);
     const groupSnap = await getDoc(groupRef);
@@ -833,7 +801,6 @@ async function updateTaskInFirestore(taskId, updatedTask) {
 async function deleteGroup(groupCode) {
     if (!currentUser || !groupCode) return false;
 
-    // Prevent deletion of the user's default group
     const defaultGroupCode = `MY_CALENDAR_${currentUser.uid}`;
     if (groupCode === defaultGroupCode) {
         alert("Your default group 'My Calendar' cannot be deleted.");
@@ -849,7 +816,6 @@ async function deleteGroup(groupCode) {
     const groupData = groupSnap.data();
     const members = groupData.members || [];
 
-    // Remove group from all members' joinedGroups
     for (const memberId of members) {
         const userRef = doc(db, "users", memberId);
         const userSnap = await getDoc(userRef);
@@ -860,17 +826,14 @@ async function deleteGroup(groupCode) {
         }
     }
 
-    // Delete all tasks linked to this group
     const q = query(collection(db, "tasks"), where("group", "==", groupCode));
     const snapshot = await getDocs(q);
     for (const docSnap of snapshot.docs) {
         await deleteDoc(doc(db, "tasks", docSnap.id));
     }
 
-    // Delete the group document
     await deleteDoc(groupRef);
 
-    // If current user was in the group, update local state
     if (members.includes(currentUser.uid)) {
         currentGroup = null;
         await loadUserGroups();
@@ -879,7 +842,6 @@ async function deleteGroup(groupCode) {
     return true;
 }
 
-// Učitavanje korisnikovih grupa
 async function loadUserGroups() {
     if (!currentUser) return;
 
@@ -893,14 +855,12 @@ async function loadUserGroups() {
     }
 
     const groupListContainer = document.getElementById("group-list-container");
-    groupListContainer.innerHTML = ""; // Isprazni prije dodavanja
+    groupListContainer.innerHTML = ""; 
 
-    // Ako nije postavljena currentGroup, postavi na prvu u listi
     if (!currentGroup && joinedGroups.length > 0) {
         currentGroup = joinedGroups[0];
     }
 
-    // Ensure renderWeek and renderMonth are defined before using
     if (typeof window.renderWeek !== 'function' || typeof window.renderMonth !== 'function') {
         console.error('renderWeek or renderMonth is not defined.');
         return;
@@ -909,11 +869,10 @@ async function loadUserGroups() {
     for (const groupCode of joinedGroups) {
         const groupRef = doc(db, "groups", groupCode);
         const groupSnap = await getDoc(groupRef);
-        let groupName = groupCode; // fallback
+        let groupName = groupCode; 
 
         if (groupSnap.exists()) {
             const groupData = groupSnap.data();
-            // Show "My Calendar" for the user's default group
             if (groupCode === `MY_CALENDAR_${currentUser.uid}`) {
                 groupName = "My Calendar";
             } else {
@@ -935,7 +894,6 @@ async function loadUserGroups() {
         groupListContainer.appendChild(btn);
     }
 
-    // Ako je neka grupa postavljena, učitaj sadržaj
     if (currentGroup) {
         window.renderWeek(currentDate);
         window.renderMonth(currentDate);
@@ -954,13 +912,11 @@ async function vote(messageId, voteType) {
     const messageData = messageSnap.data();
     if (!messageData.votes) return;
 
-    // Prevent poll creator from voting
     if (messageData.userId === currentUser.uid) {
         alert('You cannot vote on your own poll.');
         return;
     }
 
-    // Track who has voted (optional, for stricter voting rules)
     let voters = messageData.voters || [];
     if (voters.includes(currentUser.uid)) {
         alert('You have already voted.');
@@ -1032,7 +988,7 @@ taskForm.addEventListener('submit', async (e) => {
     if (!desc || !dateStr || !timeStr) return;
 
     const newTask = {
-        id: crypto.randomUUID(), // Generate a unique ID for the task
+        id: crypto.randomUUID(), 
         date: dateStr,
         time: timeStr,
         desc
@@ -1096,7 +1052,7 @@ const logoutBtn = document.getElementById('logoutBtn');
 logoutBtn.addEventListener('click', () => {
     signOut(auth)
         .then(() => {
-            window.location.href = '../../index.html'; // correct relative path for redirect
+            window.location.href = '../../index.html'; 
         })
         .catch(err => alert("Logout failed: " + err.message));
 }
