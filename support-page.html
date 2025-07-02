@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetSync Support</title>
+    <link rel="stylesheet" href="support.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">MeetSync</a>
+
+            <div class="nav-center">
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="#support" class="active">Support</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="faq-section">
+            <h1>Frequently Asked Questions</h1>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How do I create a group?</h3>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>To create a group go to the sidebar and 
+                        click on the "Create Group". You can name your 
+                        group and generate a unique join code that you 
+                        can share it with others.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>Can I be part of multiple groups?</h3>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can join multiple groups using 
+                        their unique join codes.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How do I add tasks or events?</h3>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Within a group, use the calendar interface 
+                        to add tasks or events. Click on a date, enter
+                        details, and click save.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How to create an event?</h3>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>To create an event, go to the sidebar and click 
+                        on the "Create Event", select a date and time, 
+                        and enter the event details. Click "Save" to 
+                        create the event and it will show in the chat 
+                        so that all people in the group can vote if they 
+                        are available or not if the majority of people 
+                        are free the event is going to be created.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How can I contact support?</h3>
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>If your question isn't listed here, please contact
+                         us on email: mirjanam2003@gmail.com and we’ll get
+                        back to you shortly.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 MeetSync. All rights reserved.</p>
+            <ul class="social-media">
+                <li><a href="#"><img src="facebook-icon.webp" alt="Facebook"></a></li>
+                <li><a href="#"><img src="twitter-icon.png" alt="Twitter"></a></li>
+                <li><a href="#"><img src="instagram-icon.png" alt="Instagram"></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+<script>
+    const faqs = document.querySelectorAll('.faq');
+
+    faqs.forEach(faq => {
+        faq.querySelector('.faq-question').addEventListener('click', () => {
+            faq.classList.toggle('open');
+        });
+    });
+</script>
+
+</html>
