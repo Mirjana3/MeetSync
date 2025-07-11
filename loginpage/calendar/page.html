@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeetSync</title>
+    <link rel="stylesheet" href="page_style.css" />
+    <script type="module" src="page_java.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="topbar">
+            <button id="sidebarToggle" aria-label="Toggle sidebar">&#9776;</button>
+        </header>
+
+        <nav id="sidebar" aria-label="Sidebar navigation" role="navigation">
+            <!-- Username display & editable input -->
+            <div id="username-container" title="Click to edit your username">
+                <span id="username-display"></span>
+                <input id="username-input" type="text" style="display:none;" />
+            </div>
+
+            <!-- Groups list placeholder -->
+            <div id="group-list-container" style="margin-bottom: 1em;"></div>
+
+            <span class="close-btn" id="sidebarClose" aria-label="Close sidebar">&times;</span>
+            <a href="createGroupLink" id="createGroupLink">CREATE GROUP</a>
+            <a href="joinGroupLink" id="joinGroupLink">JOIN GROUP</a>
+            <a href="deleteGroupLink" id="deleteGroupLink">DELETE GROUP</a>
+            <a href="createEventLink" id="createEventLink">CREATE EVENT</a>
+            <a href="#" id="logoutBtn">LOGOUT</a>
+        </nav>
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <main class="main-content">
+            <section class="calendar-weekly">
+                <div class="weekly-placeholder"></div>
+                <button id="showMoreBtn" class="btn-primary" style="display: none; margin: 10px auto;">Show Monthly + Voting</button>
+            </section>
+            <section class="side-panel">
+                <div class="calendar-monthly">
+                    <div class="monthly-placeholder" id="monthlyPlaceholder"></div>
+                </div>
+
+                <div class="chat-box">
+                    <h3>Voting</h3>
+                    <div class="messages" id="messages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Type a message..." />
+                        <button id="sendBtn">Send</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <h2>Add Task</h2>
+            <form id="taskForm">
+                <label for="taskDate">Date</label>
+                <input type="date" id="taskDate" required>
+
+                <label for="taskTime">Time</label>
+                <input type="time" id="taskTime" required>
+
+                <label for="taskDesc">Description</label>
+                <textarea id="taskDesc" rows="3" placeholder="Enter task details..." required></textarea>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelTaskBtn" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Task Details Modal -->
+    <div id="taskDetailsModal" class="modal">
+        <div class="modal-content">
+            <h2>Task Details</h2>
+            <form id="editTaskForm">
+                <label for="editTaskDate">Date</label>
+                <input type="date" id="editTaskDate" required />
+
+                <label for="editTaskTime">Time</label>
+                <input type="time" id="editTaskTime" required />
+
+                <label for="editTaskDesc">Description</label>
+                <textarea id="editTaskDesc" rows="3" required></textarea>
+
+                <div class="modal-actions">
+                    <button type="button" id="deleteTaskBtn" class="btn-secondary">Delete</button>
+                    <button type="submit" class="btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CREATE GROUP MODAL -->
+    <div id="createGroupModal" class="modal">
+        <div class="modal-content">
+            <h2>Create Group</h2>
+            <label for="groupNameInput">Group Name:</label>
+            <input type="text" id="groupNameInput" placeholder="Enter group name" required />
+            <p><strong>Group Code:</strong> <span id="generatedGroupCode">Will be generated</span></p>
+            <div class="modal-actions">
+                <button id="cancelCreateGroupBtn" class="btn-secondary">Cancel</button>
+                <button id="confirmCreateGroupBtn" class="btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JOIN GROUP MODAL -->
+    <div id="joinGroupModal" class="modal">
+        <div class="modal-content">
+            <h2>Join Group</h2>
+            <label for="joinGroupCodeInput">Group Code:</label>
+            <input type="text" id="joinGroupCodeInput" placeholder="Paste group code..." required />
+            <div class="modal-actions">
+                <button id="cancelJoinGroupBtn" class="btn-secondary">Cancel</button>
+                <button id="confirmJoinGroupBtn" class="btn-primary">Join</button>
+            </div>
+        </div>
+    </div>
+    <!-- DELETE GROUP MODAL -->
+    <div id="deleteGroupModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Delete Group</h2>
+            <p>Select a group to delete:</p>
+            <select id="groupSelectToDelete"></select>
+            <p id="deleteGroupWarning" class="warning-text" style="margin-top: 10px;"></p>
+            <div class="modal-actions">
+                <button id="cancelDeleteGroupBtn" class="btn-secondary">Cancel</button>
+                <button id="confirmDeleteGroupBtn" class="btn-primary">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREATE EVENT MODAL -->
+    <div id="createEventModal" class="modal">
+        <div class="modal-content">
+            <h2>Create Event</h2>
+            <label for="eventTitleInput">Event Title:</label>
+            <input type="text" id="eventTitleInput" placeholder="Enter event title" required />
+            <label for="eventDateInput">Event Date:</label>
+            <input type="date" id="eventDateInput" required />
+            <label for="eventTimeInput">Event Time:</label>
+            <input type="time" id="eventTimeInput" required />
+            <div class="modal-actions">
+                <button id="cancelCreateEventBtn" class="btn-secondary">Cancel</button>
+                <button id="confirmCreateEventBtn" class="btn-primary">Create</button>
+            </div>
+        </div>
+
+
+</body>
+
+</html>

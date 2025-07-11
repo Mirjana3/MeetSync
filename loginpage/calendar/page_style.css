@@ -1,0 +1,1195 @@
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content,
+  .calendar-weekly,
+  .weekly-placeholder,
+  .weekly-grid{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .side-panel {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 300px !important;      /* Ensure side-panel is visible */
+    max-height: 40vh !important;   /* Responsive max height */
+    overflow: visible !important;
+  }
+  .chat-box {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 200px !important;  /* Ensure chat/voting box is tall enough */
+    max-height: 100% !important;
+    flex: 1 1 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .messages {
+    max-height: 180px !important;  /* Allow scrolling inside voting box */
+    min-height: 80px !important;
+    overflow-y: auto !important;
+  }
+  .calendar-monthly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+  .weekly-grid,
+  .monthly-grid {
+    font-size: 10px !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    overflow-x: auto !important;
+  }
+  .topbar {
+    padding: 0 8px !important;
+    height: 44px !important;
+    font-size: 1em !important;
+  }
+  #sidebar {
+    left: -95vw !important;
+    width: 260px !important;
+    min-width: 0 !important;
+    max-width: 95vw !important;
+    padding: 12px 6px 12px 6px !important;
+    overflow: hidden !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.open {
+    left: 0 !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  .monthly-grid .day-cell {
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 0.85em !important;
+  }
+  .modal-content {
+    padding: 1em !important;
+    max-width: 98vw !important;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.4em 0.8em !important;
+    font-size: 0.95em !important;
+  }
+  .weekly-placeholder,
+  .weekly-grid {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  .weekly-grid {
+    grid-template-columns: 40px repeat(7, 1fr) !important;
+    grid-auto-rows: 40px !important;
+  }
+  .main-content {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .calendar-weekly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+  }
+  .calendar-monthly {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .chat-box {
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 1em !important;
+  }
+}
+
+
+
+@media (max-width: 1100px) {
+  .main-content,
+  .calendar-weekly,
+  .weekly-placeholder,
+  .weekly-grid{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .side-panel {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 300px !important;      /* Ensure side-panel is visible */
+    max-height: 40vh !important;   /* Responsive max height */
+    overflow: visible !important;
+  }
+  .chat-box {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 200px !important;  /* Ensure chat/voting box is tall enough */
+    max-height: 100% !important;
+    flex: 1 1 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .messages {
+    max-height: 180px !important;  /* Allow scrolling inside voting box */
+    min-height: 80px !important;
+    overflow-y: auto !important;
+  }
+  .calendar-monthly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+  .weekly-grid,
+  .monthly-grid {
+    font-size: 10px !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    overflow-x: auto !important;
+  }
+  .topbar {
+    padding: 0 8px !important;
+    height: 44px !important;
+    font-size: 1em !important;
+  }
+  #sidebar {
+    left: -95vw !important;
+    width: 260px !important;
+    min-width: 0 !important;
+    max-width: 95vw !important;
+    padding: 12px 6px 12px 6px !important;
+    overflow: hidden !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.open {
+    left: 0 !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  .monthly-grid .day-cell {
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 0.85em !important;
+  }
+  .modal-content {
+    padding: 1em !important;
+    max-width: 98vw !important;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.4em 0.8em !important;
+    font-size: 0.95em !important;
+  }
+  .weekly-placeholder,
+  .weekly-grid {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  .weekly-grid {
+    grid-template-columns: 40px repeat(7, 1fr) !important;
+    grid-auto-rows: 40px !important;
+  }
+  .main-content {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .calendar-weekly{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+  }
+  .calendar-monthly {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .chat-box {
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 1em !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-content,
+  .calendar-weekly,
+  .weekly-placeholder,
+  .weekly-grid{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .side-panel {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 300px !important;      /* Ensure side-panel is visible */
+    max-height: 40vh !important;   /* Responsive max height */
+    overflow: visible !important;
+  }
+  .chat-box {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 200px !important;  /* Ensure chat/voting box is tall enough */
+    max-height: 100% !important;
+    flex: 1 1 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .messages {
+    max-height: 180px !important;  /* Allow scrolling inside voting box */
+    min-height: 80px !important;
+    overflow-y: auto !important;
+  }
+  .calendar-monthly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+  .weekly-grid,
+  .monthly-grid {
+    font-size: 10px !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    overflow-x: auto !important;
+  }
+  .topbar {
+    padding: 0 8px !important;
+    height: 44px !important;
+    font-size: 1em !important;
+  }
+  #sidebar {
+    left: -80vw !important;
+    width: 260px !important;
+    min-width: 0 !important;
+    max-width: 80vw !important;
+    padding: 12px 6px 12px 6px !important;
+    overflow: hidden !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.open {
+    left: 0 !important;
+    width: 80vw !important;
+    max-width: 80vw !important;
+  }
+  .monthly-grid .day-cell {
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 0.85em !important;
+  }
+  .modal-content {
+    padding: 1em !important;
+    max-width: 98vw !important;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.4em 0.8em !important;
+    font-size: 0.95em !important;
+  }
+  .weekly-placeholder,
+  .weekly-grid {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  .weekly-grid {
+    grid-template-columns: 40px repeat(7, 1fr) !important;
+    grid-auto-rows: 40px !important;
+  }
+  .main-content {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .calendar-weekly{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+  }
+  .calendar-monthly {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .chat-box {
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 1em !important;
+  }
+}
+
+/* --- Responsive: Stack sections vertically on mobile --- */
+@media (max-width: 700px) {
+  .sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+  }
+  .sidebar.closed {
+    left: -100vw;
+    width: 80vw;
+    min-width: 0;
+    max-width: 100vw;
+    padding: 16px 8px 16px 8px;
+    overflow: hidden;
+  }
+  .main-content,
+  .calendar-weekly,
+  .weekly-placeholder,
+  .weekly-grid{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .side-panel {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 300px !important;      /* Ensure side-panel is visible */
+    max-height: 40vh !important;   /* Responsive max height */
+    overflow: visible !important;
+  }
+  .chat-box {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 200px !important;  /* Ensure chat/voting box is tall enough */
+    max-height: 100% !important;
+    flex: 1 1 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .messages {
+    max-height: 180px !important;  /* Allow scrolling inside voting box */
+    min-height: 80px !important;
+    overflow-y: auto !important;
+  }
+  .calendar-monthly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+  .weekly-grid,
+  .monthly-grid {
+    font-size: 10px !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    overflow-x: auto !important;
+  }
+  .topbar {
+    padding: 0 8px !important;
+    height: 44px !important;
+    font-size: 1em !important;
+  }
+  #sidebar {
+    left: -80vw !important;
+    width: 260px !important;
+    min-width: 0 !important;
+    max-width: 80vw !important;
+    padding: 12px 6px 12px 6px !important;
+    overflow: hidden !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.open {
+    left: 0 !important;
+    width: 80vw !important;
+    max-width: 80vw !important;
+  }
+  .monthly-grid .day-cell {
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 0.85em !important;
+  }
+  .modal-content {
+    padding: 1em !important;
+    max-width: 98vw !important;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.4em 0.8em !important;
+    font-size: 0.95em !important;
+  }
+  .weekly-placeholder,
+  .weekly-grid {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  .weekly-grid {
+    grid-template-columns: 40px repeat(7, 1fr) !important;
+    grid-auto-rows: 40px !important;
+  }
+  .main-content {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .calendar-weekly{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+  }
+  .calendar-monthly {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .chat-box {
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 1em !important;
+  }
+}
+
+
+/* --- Extra small screens: max-width 500px --- */
+@media (max-width: 500px) {
+  .main-content,
+  .calendar-weekly,
+  .weekly-placeholder,
+  .weekly-grid{
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  .side-panel {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 300px !important;      /* Ensure side-panel is visible */
+    max-height: 40vh !important;   /* Responsive max height */
+    overflow: visible !important;
+  }
+  .chat-box {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 200px !important;  /* Ensure chat/voting box is tall enough */
+    max-height: 100% !important;
+    flex: 1 1 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .messages {
+    max-height: 180px !important;  /* Allow scrolling inside voting box */
+    min-height: 80px !important;
+    overflow-y: auto !important;
+  }
+  .calendar-monthly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+  .weekly-grid,
+  .monthly-grid {
+    font-size: 10px !important;
+    min-width: 0 !important;
+    width: 100vw !important;
+    overflow-x: auto !important;
+  }
+  .topbar {
+    padding: 0 8px !important;
+    height: 44px !important;
+    font-size: 1em !important;
+  }
+  #sidebar {
+    left: -95vw !important;
+    width: 220px !important;
+    min-width: 0 !important;
+    max-width: 95vw !important;
+    padding: 8px 4px 8px 4px !important;
+    overflow: hidden !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.open {
+    left: 0 !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  .monthly-grid .day-cell {
+    height: 28px !important;
+    line-height: 28px !important;
+    font-size: 0.85em !important;
+  }
+  .modal-content {
+    padding: 1em !important;
+    max-width: 98vw !important;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.4em 0.8em !important;
+    font-size: 0.95em !important;
+  }
+  .weekly-placeholder,
+  .weekly-grid {
+    min-width: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+  .weekly-grid {
+    grid-template-columns: 40px repeat(7, 1fr) !important;
+    grid-auto-rows: 40px !important;
+  }
+  .main-content {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .calendar-weekly {
+    width: 100vw !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+  }
+  .calendar-monthly {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .chat-box {
+    margin-bottom: 8px !important;
+    padding: 4px !important;
+  }
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 1em !important;
+  }
+}
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e3d5e3;
+    color: white;
+    padding: 0 20px;
+    height: 50px;
+}
+
+.topbar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -33.33%;
+    width: 33.33%;
+    max-width: 400px;
+    min-width: 260px;
+    height: 100%;
+    background-color: #f0f0f0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    padding: 24px 20px 20px 20px;
+    overflow-y: auto;
+}
+
+#sidebar.open {
+    left: 0;
+}
+
+.sidebar-content h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #22223b;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+#sidebar.open~.sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+}
+
+#sidebar a {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+#sidebar a:hover {
+    background-color: #efddfb;
+    color: #e2b6f4;
+}
+
+#username-container {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+#username-input {
+    font-size: 1em;
+    padding: 5px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    height: calc(100% - 50px);
+}
+
+.calendar-weekly {
+    flex: 2;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.side-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.group-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+.group-btn:hover {
+  background-color: #e5e7eb;
+}
+
+
+.calendar-monthly {
+    flex: 1;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #bdc3c7;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.monthly-placeholder {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 0.9rem;
+    color: #111827;
+}
+
+.monthly-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.monthly-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ec83ef;
+    transition: color 0.2s;
+    padding: 4px 8px;
+}
+
+.monthly-controls button:hover {
+    color: #e17beb;
+}
+
+.monthly-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.monthly-header button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #c386e0;
+    transition: color 0.3s ease;
+    padding: 0 8px;
+    user-select: none;
+}
+
+.monthly-header button:hover {
+    color: #c178e2;
+}
+
+
+.monthly-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    flex-grow: 1;
+    user-select: none;
+}
+
+.monthly-grid .day-name {
+    font-weight: 600;
+    text-align: center;
+    color: #4b5563;
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.monthly-grid .day-cell {
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 6px;
+    cursor: default;
+    transition: background-color 0.3s ease;
+}
+
+.monthly-grid .day-cell:hover {
+    background-color: #dbeafe;
+}
+
+.monthly-grid .day-cell.outside {
+    color: #aaa;
+}
+
+.monthly-grid .day-cell.today {
+    background-color: #c87df4;
+    color: white;
+    font-weight: 700;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.chat-box {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #bdc3c7;
+    padding: 10px;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.chat-box h3 {
+    margin: 0 0 10px 0;
+}
+
+.messages {
+    flex: 1 1 0;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: white;
+    font-size: 0.9rem;
+    max-height: 350px; /* Add or increase this value for more scrollable area */
+    min-height: 100px; /* Optional: ensures a minimum height */
+}
+
+.chat-message {
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #f1f5f9;
+    margin-bottom: 5px;
+}
+
+
+.chat-input-container {
+    display: flex;
+    gap: 10px;
+}
+
+#chatInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+#sendBtn {
+    padding: 8px 15px;
+    background-color: #de61eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+    
+#sendBtn:hover {
+    background-color: #bf61eb;
+}
+
+.weekly-placeholder {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.week-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.week-controls button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1.5px solid #dc89eb;
+    background: white;
+    color: #dc89eb;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.week-controls button:hover {
+    background-color: #d481e3;
+    color: white;
+    border-color: #dc89eb;
+}
+
+.weekly-grid {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    grid-auto-rows: 60px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    user-select: none;
+}
+
+.weekly-grid .day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f7fa;
+    font-weight: 700;
+    color: #1f2937;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+    padding: 6px 0;
+    user-select: none;
+}
+
+.weekly-grid .day-name {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #4b5563;
+}
+
+.weekly-grid .day-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.weekly-grid .hour-label {
+    background-color: #fafafa;
+    color: #4b5563;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+}
+
+.weekly-grid .time-slot {
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.weekly-grid .time-slot:hover {
+    background-color: #eddbef;
+}
+
+.weekly-grid .day-header.today {
+    background-color: #e6d4f1;
+    color: white;
+    box-shadow: inset 0 -3px 0 #a45dbf;
+}
+
+.weekly-grid .day-header.today .day-name,
+.weekly-grid .day-header.today .day-date {
+    color: white;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 1em;
+  font-weight: 500;
+}
+
+.modal-content input[type="date"],
+.modal-content input[type="time"],
+.modal-content textarea {
+  background-color: #f8edf9;
+  border: 1px solid #ede0ee;
+  padding: 0.6em;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: #cc8eed;
+  outline: none;
+}
+
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5em;
+  gap: 1em;
+}
+
+.btn-primary {
+  background-color: #e4bef7;
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #eb9bec;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.task {
+  background-color: #f5ccff;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 2px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 4px solid #e4bef7;
+}
+
+.task:hover {
+  background-color: #ddb0f4;
+}

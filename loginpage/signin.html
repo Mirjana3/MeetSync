@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="login_style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script type="module" src="login_script.js"></script>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>SIGN IN</h2>
+        <form id="signinForm" action="#" method="POST">
+            <div class="form-group">
+                <input type="email" name="email" id="email" required placeholder=" " />
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" required placeholder=" " />
+                <label for="password">Password</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm_password" id="confirm_password" required placeholder=" " />
+                <label for="confirm_password">Confirm Password</label>
+            </div>
+            <button id="submit" type="submit">Sign In</button>
+        </form>
+        <div class="signup-link">
+            Already registered? <a href="login.html">Login</a>
+        </div>
+    </div>
+</body>
+
+</html>
