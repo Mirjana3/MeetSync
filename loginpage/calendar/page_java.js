@@ -199,6 +199,23 @@ onAuthStateChanged(auth, async (user) => {
         await ensureDefaultGroup();
         await loadUserGroups();
         await loadAndShowNickname();
+
+        // Check if nickname exists, if not, prompt user to set it
+        const userRef = doc(db, "users", currentUser.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+            const data = userSnap.data();
+            if (!data.nickname || data.nickname.trim() === "") {
+                alert("Welcome! Please click your username at the top left to set your nickname.");
+                // Optionally, visually highlight the username container:
+                usernameContainer.style.background = "#ffe6e6";
+                usernameContainer.style.border = "2px solid #e57373";
+                setTimeout(() => {
+                    usernameContainer.style.background = "";
+                    usernameContainer.style.border = "";
+                }, 6000);
+            }
+        }
     }
 });
 
@@ -705,8 +722,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Chat
     const messages = document.getElementById('messages');
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
 
     // CREATE EVENT MODAL
     document.querySelector('a[href="createEventLink"]').addEventListener('click', (e) => {
