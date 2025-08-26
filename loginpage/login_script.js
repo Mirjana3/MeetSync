@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                window.location.href = calendar/page.html';
+                window.location.href = 'calendar/page.html'; // Redirect after successful login
             } catch (error) {
                 alert('Login failed: ' + error.message);
             }
@@ -131,4 +131,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
