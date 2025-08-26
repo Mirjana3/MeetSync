@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                alert('Login successful!');
-                // Redirect or show user dashboard here
+                window.location.href = 'page.html'; // Redirect after successful login
             } catch (error) {
                 alert('Login failed: ' + error.message);
             }
