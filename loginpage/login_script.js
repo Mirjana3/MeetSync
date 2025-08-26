@@ -17,7 +17,7 @@ generateRandomNumbers();
 
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut, sendPasswordResetEmail, confirmPasswordReset } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
 import { fetchSignInMethodsForEmail } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
 
 // Firebase config
@@ -109,6 +109,86 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     handleAuthError(error); // ostale greške
                 }
+            }
+        });
+    }
+
+    // Password reset modal logic
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+    const passwordResetModal = document.getElementById('passwordResetModal');
+    const closeResetModal = document.getElementById('closeResetModal');
+    const passwordResetForm = document.getElementById('passwordResetForm');
+
+    if (forgotPasswordLink) {
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            passwordResetModal.style.display = 'block';
+        });
+    }
+    if (closeResetModal) {
+        closeResetModal.addEventListener('click', () => {
+            passwordResetModal.style.display = 'none';
+        });
+    }
+    if (passwordResetForm) {
+        passwordResetForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('resetEmail').value.trim();
+            if (!email) {
+                alert('Please enter your email.');
+                return;
+            }
+            try {
+                await sendPasswordResetEmail(auth, email);
+                alert('A password reset email has been sent. Please check your inbox.');
+                passwordResetModal.style.display = 'none';
+            } catch (error) {
+                handleAuthError(error);
+            }
+        });
+    }
+
+    // Set new password modal logic (if oobCode in URL)
+    const setNewPasswordModal = document.getElementById('setNewPasswordModal');
+    const closeSetNewPasswordModal = document.getElementById('closeSetNewPasswordModal');
+    const newPasswordForm = document.getElementById('newPasswordForm');
+
+    // Check for oobCode in URL (Firebase password reset link)
+    const params = new URLSearchParams(window.location.search);
+    const oobCode = params.get('oobCode');
+    if (oobCode && setNewPasswordModal) {
+        setNewPasswordModal.style.display = 'block';
+    }
+    if (closeSetNewPasswordModal) {
+        closeSetNewPasswordModal.addEventListener('click', () => {
+            setNewPasswordModal.style.display = 'none';
+            window.location.href = 'login.html';
+        });
+    }
+    if (newPasswordForm) {
+        newPasswordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            if (newPassword.length < 6) {
+                alert('Password must be at least 6 characters.');
+                return;
+            }
+            if (newPassword !== confirmNewPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+            if (!oobCode) {
+                alert('Invalid or expired reset link.');
+                return;
+            }
+            try {
+                await confirmPasswordReset(auth, oobCode, newPassword);
+                alert('Password has been reset. You can now log in.');
+                setNewPasswordModal.style.display = 'none';
+                window.location.href = 'login.html';
+            } catch (error) {
+                alert('Error resetting password: ' + error.message);
             }
         });
     }
