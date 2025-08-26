@@ -46,8 +46,23 @@
                 <button id="closeResetModal" style="margin-top:10px; width:100%;">Close</button>
             </div>
         </div>
+        <!-- Set new password modal (shown if oobCode in URL) -->
+        <div id="setNewPasswordModal"
+            style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:999;">
+            <div
+                style="background:white; color:black; padding:30px; border-radius:10px; max-width:400px; margin:100px auto;">
+                <h3>Set New Password</h3>
+                <form id="newPasswordForm">
+                    <input type="password" id="newPassword" placeholder="New password" required
+                        style="width:100%; margin-bottom:10px;">
+                    <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required
+                        style="width:100%; margin-bottom:10px;">
+                    <button type="submit" style="width:100%;">Set Password</button>
+                </form>
+                <button id="closeSetNewPasswordModal" style="margin-top:10px; width:100%;">Close</button>
+            </div>
+        </div>
     </div>
 </body>
-
 
 </html>
