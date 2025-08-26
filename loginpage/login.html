@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,12 +10,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
     <script type="module" src="login_script.js"></script>
 </head>
-
 <body>
-
     <div class="login-container">
         <h2>LOGIN</h2>
-        <form action="login.html" method="POST">
+        <form id="loginForm" action="login.html" method="POST">
             <div class="form-group">
                 <input type="email" name="email" id="email" required placeholder=" " />
                 <label for="email">Email</label>
@@ -32,37 +29,25 @@
             <br>
             <a href="#" id="forgotPasswordLink">Forgot Password?</a>
         </div>
-        <!-- Password reset modal -->
-        <div id="passwordResetModal"
-            style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:999;">
-            <div
-                style="background:white; color:black; padding:30px; border-radius:10px; max-width:400px; margin:100px auto;">
-                <h3>Reset Password</h3>
-                <form id="passwordResetForm">
-                    <input type="email" id="resetEmail" placeholder="Enter your email" required
-                        style="width:100%; margin-bottom:10px;">
-                    <button type="submit" style="width:100%;">Send Reset Email</button>
-                </form>
-                <button id="closeResetModal" style="margin-top:10px; width:100%;">Close</button>
-            </div>
+        <!-- Inline password reset form, hidden by default -->
+        <div id="passwordResetSection" style="display:none; margin-top:30px;">
+            <h3>Reset Password</h3>
+            <form id="passwordResetForm">
+                <input type="email" id="resetEmail" placeholder="Enter your email" required style="width:100%; margin-bottom:10px;">
+                <button type="submit" style="width:100%;">Send Reset Email</button>
+            </form>
+            <button id="closeResetSection" style="margin-top:10px; width:100%;">Cancel</button>
         </div>
-        <!-- Set new password modal (shown if oobCode in URL) -->
-        <div id="setNewPasswordModal"
-            style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:999;">
-            <div
-                style="background:white; color:black; padding:30px; border-radius:10px; max-width:400px; margin:100px auto;">
-                <h3>Set New Password</h3>
-                <form id="newPasswordForm">
-                    <input type="password" id="newPassword" placeholder="New password" required
-                        style="width:100%; margin-bottom:10px;">
-                    <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required
-                        style="width:100%; margin-bottom:10px;">
-                    <button type="submit" style="width:100%;">Set Password</button>
-                </form>
-                <button id="closeSetNewPasswordModal" style="margin-top:10px; width:100%;">Close</button>
-            </div>
+        <!-- Inline set new password form, hidden by default -->
+        <div id="setNewPasswordSection" style="display:none; margin-top:30px;">
+            <h3>Set New Password</h3>
+            <form id="newPasswordForm">
+                <input type="password" id="newPassword" placeholder="New password" required style="width:100%; margin-bottom:10px;">
+                <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required style="width:100%; margin-bottom:10px;">
+                <button type="submit" style="width:100%;">Set Password</button>
+            </form>
+            <button id="closeSetNewPasswordSection" style="margin-top:10px; width:100%;">Cancel</button>
         </div>
     </div>
 </body>
-
 </html>
