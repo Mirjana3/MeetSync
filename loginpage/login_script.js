@@ -17,7 +17,7 @@ generateRandomNumbers();
 
 // Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, confirmPasswordReset } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, confirmPasswordReset, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
 // Firebase config
 const firebaseConfig = {
@@ -46,9 +46,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                window.location.href = 'calendar/page.html'; // Redirect after successful login
+                window.location.href = 'calendar/page.html';
             } catch (error) {
-                alert('Login failed: ' + error.message);
+                if (error.code === 'auth/wrong-password') {
+                    alert('Incorrect password.');
+                } else if (error.code === 'auth/user-not-found') {
+                    alert('No account found with this email address.');
+                } else if (error.code === 'auth/invalid-email') {
+                    alert('Invalid email address.');
+                } else {
+                    alert('Login failed: ' + error.message);
+                }
+            }
+        });
+    }
+
+    // SIGNUP LOGIC EXAMPLE
+    const signinForm = document.getElementById('signinForm');
+    if (signinForm) {
+        signinForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            if (!email || password.length < 6) {
+                alert('Invalid email or password.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert('Account created successfully!');
+                window.location.href = 'login.html';
+            } catch (error) {
+                if (error.code === 'auth/email-already-in-use') {
+                    alert('An account already exists with this email address.');
+                } else if (error.code === 'auth/invalid-email') {
+                    alert('Invalid email address.');
+                } else {
+                    alert('Sign up failed: ' + error.message);
+                }
             }
         });
     }
